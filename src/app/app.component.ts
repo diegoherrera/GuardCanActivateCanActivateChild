@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Actor } from './Entidades/Actor';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'router00';
+
+  
+
+  constructor() {
+    
+  }
 }
