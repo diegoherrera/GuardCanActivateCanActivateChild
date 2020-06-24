@@ -1,19 +1,32 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BooksComponent } from './books/books.component';
-import { DetailComponent } from './detail/detail.component';
-import { AddComponent } from './add/add.component';
-import { ErrorComponent } from './error/error.component';
-import { RemoveComponent } from './remove/remove.component';
+import { BooksComponent } from './Componentes/books/books.component';
 
+import { AddComponent } from './Componentes/add/add.component';
+import { ErrorComponent } from './error/error.component';
+import { LoginComponent } from './Componentes/login/login.component';
+import { ListComponent } from './Componentes/list/list.component';
+import { GuardianGuard } from './guardian.guard';
+import { DesactivarrutaGuard } from './desactivarruta.guard';
 
 const routes: Routes = [
-{ path: 'books', component: BooksComponent },
-{ path: 'detail/:id', component: DetailComponent },	
-{ path: 'remove/:id/:id1', component: RemoveComponent },		  
-{ path: 'add', component: AddComponent },
-{ path: '', redirectTo: '/books', pathMatch: 'full' },
-{ path: '**', component: ErrorComponent }];
+  {
+    path: 'books',
+    component: BooksComponent,
+    canActivate: [GuardianGuard],
+    canActivateChild: [GuardianGuard],
+    children: [
+      { path: 'list', component: ListComponent },
+      { path: '', component: ListComponent },
+      { path: 'add', component: AddComponent, canDeactivate: [DesactivarrutaGuard] },
+    ]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  { path: '', redirectTo: '/books', pathMatch: 'full' },
+  { path: '**', component: ErrorComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

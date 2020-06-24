@@ -1,28 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BooksComponent } from './books/books.component';
-import { DetailComponent } from './detail/detail.component';
-import { AddComponent } from './add/add.component';
+import { BooksComponent } from './Componentes/books/books.component';
+import { AddComponent } from './Componentes/add/add.component';
 import { ErrorComponent } from './error/error.component';
-import { RemoveComponent } from './remove/remove.component';
+import { LoginComponent } from './Componentes/login/login.component';
+import { ListComponent } from './Componentes/list/list.component';
+import { DesactivarrutaGuard } from './desactivarruta.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     BooksComponent,
-    DetailComponent,
     AddComponent,
     ErrorComponent,
-    RemoveComponent
+    LoginComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    DesactivarrutaGuard    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,9 @@
+{{ profile | json }}
+<nav [ngClass] = "'menu'">
+   <a routerLink="/books/list" routerLinkActive="active-link">List</a> | 
+   <a routerLink="/books/add" routerLinkActive="active-link">Add Book</a>
+   | <a (click)="cerrarSession()" routerLinkActive="active-link" >Cerrar Session</a> 
+</nav>  
+<div>	
+  <router-outlet></router-outlet>	
+</div>

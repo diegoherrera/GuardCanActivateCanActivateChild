@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddComponent implements OnInit {
 
+  pendientesCambios: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  tieneCambiosPendientes() {
+    return this.pendientesCambios;
+  }
+  notengoPendiente() {
+    this.pendientesCambios = false;
+  }
 }
